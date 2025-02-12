@@ -1,0 +1,8 @@
+<svg width="200" height="250" viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
+  <!-- Face Outline with a More Natural Chin -->
+  <path d="M60 50 
+           C30 100, 40 190, 100 220 
+           C160 190, 170 100, 140 50 
+           Q100 10, 60 50" 
+        stroke="black" fill="none" stroke-width="3"/>
+</svg>
