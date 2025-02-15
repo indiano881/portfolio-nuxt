@@ -1,7 +1,7 @@
 <svg width="150" height="100" viewBox="0 0 150 100" xmlns="http://www.w3.org/2000/svg">
   <!-- Mouth Outline -->
-  <path d="M 40 50 Q 75 80, 110 50" stroke="black" fill="none" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 40 50 Q 75 80, 110 50" stroke="black" fill="none" stroke-width="5" stroke-linecap="round"/>
   
   <!-- Lower Lip Hint (optional, for a softer look) -->
-  <path d="M 55 60 Q 75 70, 95 60" stroke="black" fill="none" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <path d="M 55 60 Q 75 70, 95 60" stroke="black" fill="none" stroke-width="5" stroke-linecap="round" opacity="0.5"/>
 </svg>
