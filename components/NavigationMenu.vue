@@ -84,7 +84,6 @@ onBeforeUnmount(() => {
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: space-between;
-  @apply bg-greynav;
   color: #fefefc;
   z-index: 50;
 }
