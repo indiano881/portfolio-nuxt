@@ -94,9 +94,18 @@
     <div>
       <CardShuffled />
     </div>
+    <div>
+    <div>
+      <button @click="setLocale('en')">en</button>
+      <button @click="setLocale('se')">se</button>
+      <button @click="setLocale('it')">it</button>
+      <p>{{ $t('welcome') }}</p>
+    </div>
+  </div>
   </div>
 </template>
 <script setup>
+const { setLocale } = useI18n()
 import CardShuffled from "~/components/CardShuffled.vue";
 const isAngry= ref(false);
 const eyeOffsetX = ref(0);
