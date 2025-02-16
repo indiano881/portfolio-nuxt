@@ -6,9 +6,7 @@ html {
 }
 
 body {
-  background: #09203f;
-  background: linear-gradient(to top, #09203f 0%, #537895 100%);
+  /*background: #09203f;
+  background: linear-gradient(to top, #09203f 0%, #537895 100%);*/
   min-height: 100vh;
-  touch-action: manipulation;
-  overscroll-behavior-y: none;
 }

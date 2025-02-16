@@ -3,6 +3,7 @@
     <div class="deck card" @click="takeCard">
       <div class="card__back"></div>
     </div>
+
     <transition-group
       name="hand-card"
       tag="div"
@@ -15,23 +16,33 @@
         v-for="(card, index) in cards"
         :key="card.id"
         class="hand__card card"
-        :class="['card--' + card.suit]"
+        :class="['card--' + card.suit.name]" 
         @click="dropCard(card.id)"
       >
         <div class="card__face">
+          <!-- Renders the top-left and bottom-right rank text (6,7, etc.) -->
           <div
             class="card__value"
             v-for="i in 2"
             :data-value="card.value"
-            :data-suit="card.suit"
+            :data-suit="card.suit.name"
           ></div>
-          <div class="card__suit">{{ card.suit }}</div>
+
+          <!-- Replace suit text with an image -->
+          <div class="card__suit">
+            <img
+              :src="card.suit.icon"
+              :alt="card.suit.name"
+              style="max-height: 1em;"
+            />
+          </div>
         </div>
         <div class="card__back"></div>
       </div>
     </transition-group>
   </div>
 </template>
+
 
 <script setup>
 import { ref, onMounted } from "vue";
@@ -40,22 +51,33 @@ const SETTLE_DURATION = 100;
 const DROP_DURATION = 200;
 const CARDS_AMOUNT = 4;
 
-// spades, hearts, diamonds, clubs
-const SUITS = ["♠", "♥", "♦", "♣"];
-const VALUES = ["6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+// 1) Define SUITS as an array of objects with `name` + `icon` paths:
+const SUITS = [
+  { name: "React",   icon: "/techstack/react.svg" },
+  { name: "Vue",   icon: "/techstack/vue.svg" },
+  { name: "Node", icon: "/techstack/node.svg" },
+  { name: "Docker",    icon: "/techstack/docker.svg" },
+  { name: "Git",    icon: "/techstack/git.svg" },
+  { name: "Aws",    icon: "/techstack/amazon.svg" },
+  { name: "Js",    icon: "/techstack/js.svg" },
+];
+
+// Keep the same VALUES array if you only want suit images, not rank images
+const VALUES = ["10", "J", "Q", "K", "A"];
+
+// 2) Generate the deck so that each card.suit is an object containing { name, icon }
 const CARDS = VALUES.flatMap((value, i) =>
   SUITS.map((suit, j) => ({
     id: `${i}-${j}`,
     value,
     suit,
-  })),
+  }))
 );
 
-// Reactive state
 const cards = ref([]);
 const isDeckEnabled = ref(true);
 
-// Transition hooks
+// Transition hooks remain the same
 function enter(el, done) {
   el.classList.add("hand__card--enter", "hand__card--flipped");
   el.style.pointerEvents = "none";
@@ -67,7 +89,7 @@ function enter(el, done) {
         el.style.pointerEvents = "all";
         done();
       },
-      { once: true },
+      { once: true }
     );
     el.classList.remove("hand__card--enter");
   }, 0);
@@ -87,28 +109,26 @@ function leave(el, done) {
   el.addEventListener("transitionend", onLeave, false);
 }
 
-// Actions
+// Deal a card from deck to hand
 function takeCard() {
   if (!isDeckEnabled.value) return;
 
   if (cards.value.length === CARDS_AMOUNT) {
     cards.value.shift(); // remove oldest card if at max capacity
   }
-
   const randomIndex = Math.floor(Math.random() * CARDS.length);
-  // Move the chosen card from the deck to the hand
   cards.value.push(...CARDS.splice(randomIndex, 1));
 }
 
+// Drop a card from the hand back to the deck
 function dropCard(id) {
   const dropIndex = cards.value.findIndex((card) => card.id === id);
   if (dropIndex !== -1) {
-    // Move the dropped card from hand back into deck
     CARDS.push(...cards.value.splice(dropIndex, 1));
   }
 }
 
-// Lifecycle
+// Auto-deal on mount
 onMounted(() => {
   let amount = 0;
   const intervalId = setInterval(() => {
@@ -120,11 +140,12 @@ onMounted(() => {
   }, DROP_DURATION);
 });
 </script>
+
 <style>
 html {
   --card-width: 20vmin;
   --card-height: calc(var(--card-width) * 1.6);
-  --color-table: #4d5265;
+  --color-table: #228de4;
   --color-card-face: #ecebf3;
   --color-card-back: #920114;
   --color-suits-black: #0c120c;
@@ -141,13 +162,14 @@ body {
 
 body {
   margin: 0;
-  background: var(--color-table);
+  
   display: flex;
   flex-flow: column;
   align-items: center;
 }
 
 .container {
+  background: var(--color-table);
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -168,14 +190,18 @@ body {
   perspective: 100px;
 }
 
-.card--♠,
-.card--♣ {
-  color: var(--color-suits-black);
+.card--Node,
+.card--Vue {
+  color: #42b983;
 }
 
-.card--♥,
-.card--♦ {
-  color: var(--color-suits-red);
+.card--React,
+.card--Docker {
+  color: #085c73;
+}
+.card--Git,
+.card--Aws {
+  color: #FF9900;
 }
 
 .card__face,
