@@ -16,6 +16,24 @@
           class="absolute inset-0 w-full h-full object-contain z-10"
           style="top: 0%; left: 0%; width: 70%"
         />
+        <!--eyebrowl left-->
+        <img
+          src="/eyebrow.svg"
+          alt="eye"
+          class="absolute z-20"
+          style="top: 31%; left: 25%; width: 10%"
+          :style="{
+            transform: `translate(${0}px, ${eyeOffsetY}px) rotateY(180deg)`,
+          }"
+        />
+        <!--eyebrowl right-->
+        <img
+          src="/eyebrow.svg"
+          alt="eye"
+          class="absolute z-20"
+          style="top: 31%; left: 35%; width: 10%"
+          :style="{ transform: `translate(${0}px, ${eyeOffsetY}px) ` }"
+        />
         <!-- Glasses -->
         <img
           src="/glasses2.svg"
@@ -44,15 +62,15 @@
           @click="handleClick"
           class="absolute z-30"
           style="
-            top: 40%;
-            left: 30%;
-            width: 10%;
+            top: 44%;
+            left: 31%;
+            width: 8%;
             background: transparent;
             border: none;
             cursor: pointer;
           "
         >
-          <img src="/nose4.svg" alt="nose" class="w-full h-auto" />
+          <img src="/nose5.svg" alt="nose" class="w-full h-auto" />
         </button>
 
         <!-- mouth -->
