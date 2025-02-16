@@ -80,6 +80,15 @@
           class="absolute z-20 w-[20px]"
           style="top: 41%; left: 20%; width: 30%"
         />
+        <!--anger nerve in the front-->
+        <img
+      v-show="isAngry"
+      src="/anger.svg"
+      alt="nerve"
+      class="absolute z-20"
+      style="top: 30%; left: 26%; width: 16px;"
+    />
+    
       </div>
     </div>
     <div>
@@ -89,7 +98,7 @@
 </template>
 <script setup>
 import CardShuffled from "~/components/CardShuffled.vue";
-
+const isAngry= ref(false);
 const eyeOffsetX = ref(0);
 const eyeOffsetY = ref(0);
 
@@ -111,7 +120,8 @@ const handleMouseMove = (e) => {
   eyeOffsetY.value = offsetY * ratio;
 };
 function handleClick() {
-  console.log("click");
+  isAngry.value= !isAngry.value;
+  console.log(isAngry.value)
 }
 // Attach the event listener when component mounts
 onMounted(() => {
@@ -123,3 +133,5 @@ onBeforeUnmount(() => {
   window.removeEventListener("mousemove", handleMouseMove);
 });
 </script>
+
+

@@ -136,13 +136,12 @@ html {
 html,
 body {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
 }
 
 body {
   margin: 0;
   background: var(--color-table);
-  overflow: hidden;
   display: flex;
   flex-flow: column;
   align-items: center;
