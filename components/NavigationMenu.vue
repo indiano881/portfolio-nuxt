@@ -1,5 +1,4 @@
 <script setup>
-
 const windowWidth = ref("");
 const menuOpen = ref(false);
 const buttonShow = ref(false);
@@ -24,8 +23,6 @@ onMounted(() => {
 onBeforeUnmount(() => {
   window.removeEventListener("resize", getWindowWidth);
 });
-
-
 </script>
 
 <template>
@@ -51,14 +48,10 @@ onBeforeUnmount(() => {
             <NuxtLink href="/" @click="closeMenu">What is Nuxtermind?</NuxtLink>
           </li>
           <li class="n1 p-2 md:pr-4">
-            <NuxtLink href="/" @click="closeMenu"
-              >About the game</NuxtLink
-            >
+            <NuxtLink href="/" @click="closeMenu">About the game</NuxtLink>
           </li>
           <li class="n1 p-2 md:pr-4">
-            <NuxtLink href="/" @click="closeMenu"
-              >Single player</NuxtLink
-            >
+            <NuxtLink href="/" @click="closeMenu">Single player</NuxtLink>
           </li>
           <li class="n1 mt-2 pb-2 xl:mt-0 xl:p-2 xl:pr-4">
             <NuxtLink
@@ -68,7 +61,6 @@ onBeforeUnmount(() => {
               >Multiplayer</NuxtLink
             >
           </li>
-          
         </ul>
       </nav>
     </transition>
@@ -156,7 +148,6 @@ img {
   padding: 50px;
   width: calc(100%);
   height: calc(100vh);
- 
 }
 .nav.sp-menu .nav__list {
   display: flex;
