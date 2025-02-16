@@ -38,9 +38,14 @@
         <img src="/mouth.svg" alt="mouth" class="absolute z-20 w-[20px]" style="top: 41%; left: 20%; width: 30%;" />
       </div>
     </div>
+    <div>
+      <CardShuffled />
+    </div>
   </div>
 </template>
 <script setup>
+import CardShuffled from '~/components/CardShuffled.vue'
+
 const eyeOffsetX = ref(0)
 const eyeOffsetY = ref(0)
 
